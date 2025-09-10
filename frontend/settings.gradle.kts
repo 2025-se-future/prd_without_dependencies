@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MovieSwipe"
+rootProject.name = "Movie Swipe"
 include(":app")
+ 

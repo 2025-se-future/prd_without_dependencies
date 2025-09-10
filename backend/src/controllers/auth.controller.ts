@@ -13,6 +13,7 @@ export class AuthController {
     res: Response<AuthenticateUserResponse>,
     next: NextFunction
   ) {
+    console.log(req.body);
     try {
       const { idToken } = req.body;
 

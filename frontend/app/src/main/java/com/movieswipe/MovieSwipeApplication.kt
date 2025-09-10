@@ -1,13 +1,7 @@
 package com.movieswipe
 
 import android.app.Application
-import com.movieswipe.di.AppContainer
+import dagger.hilt.android.HiltAndroidApp
 
-class MovieSwipeApplication : Application() {
-    lateinit var container: AppContainer
-
-    override fun onCreate() {
-        super.onCreate()
-        container = AppContainer(this)
-    }
-}
+@HiltAndroidApp
+class MovieSwipeApplication : Application()
