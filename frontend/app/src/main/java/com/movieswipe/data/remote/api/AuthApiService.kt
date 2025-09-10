@@ -6,6 +6,8 @@ import com.movieswipe.data.remote.dto.AuthenticateUserRequest
 import com.movieswipe.data.remote.dto.AuthenticateUserResponse
 import com.movieswipe.data.remote.dto.ErrorResponse
 import com.movieswipe.utils.Result
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -36,7 +38,9 @@ class AuthApiService @Inject constructor(
                 .post(requestBody)
                 .build()
             
-            val response = httpClient.newCall(httpRequest).execute()
+            val response =  withContext(Dispatchers.IO) {
+                httpClient.newCall(httpRequest).execute()
+            }
             Log.d("AuthApiService", "Response code: ${response.code}")
             handleAuthResponse(response)
         } catch (e: IOException) {
